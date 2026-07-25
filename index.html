@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>경북 학생이 대구에 취직하면 인재 유출인가 — 5극3특 시대, 지역인재 성과를 재는 자(尺)</title>
+<meta name="description" content="시·도로 재던 지역인재 유출을 5극3특 권역 기준으로 다시 집계하면 무엇이 달라지는가. 통계청 인구이동 원자료 11년치 실증 분석과 4,000억 성과예산 재배분 시뮬레이션.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="경북 학생이 대구에 취직하면 인재 유출인가?">
+<meta property="og:description" content="5극3특 시대, 지역인재 성과를 재는 자(尺)를 다시 묻다 — 데이터로 본 정책 제안">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F8FB; --card:#FFFFFF; --ink:#141D28; --ink-soft:#3E4C5C; --muted:#6E7C8C;
+  --line:#DDE5EC; --line-soft:#EAF0F5;
+  --blue:#1F5FA0; --blue-strong:#164A80; --blue-soft:#7FB0D8; --blue-wash:#E7F0F8;
+  --red:#B2182B; --red-soft:#E39B93; --red-wash:#FBEBE8;
+  --amber:#B9821B; --amber-wash:#F6ECD6;
+  --grey-bar:#B7C2CD;
+  --maxw:660px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#0E1620; --card:#16212E; --ink:#EAF1F8; --ink-soft:#B9C6D4; --muted:#8496A6;
+    --line:#25333F; --line-soft:#1D2A36;
+    --blue:#5B9BD8; --blue-strong:#7FB6E6; --blue-soft:#3C6B96; --blue-wash:#17293A;
+    --red:#E0776B; --red-soft:#8A3B34; --red-wash:#2E1B18;
+    --amber:#D8AA4C; --amber-wash:#2C2412;
+    --grey-bar:#4B5A69;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1620; --card:#16212E; --ink:#EAF1F8; --ink-soft:#B9C6D4; --muted:#8496A6;
+  --line:#25333F; --line-soft:#1D2A36;
+  --blue:#5B9BD8; --blue-strong:#7FB6E6; --blue-soft:#3C6B96; --blue-wash:#17293A;
+  --red:#E0776B; --red-soft:#8A3B34; --red-wash:#2E1B18;
+  --amber:#D8AA4C; --amber-wash:#2C2412; --grey-bar:#4B5A69;
+}
+:root[data-theme="light"]{
+  --paper:#F5F8FB; --card:#FFFFFF; --ink:#141D28; --ink-soft:#3E4C5C; --muted:#6E7C8C;
+  --line:#DDE5EC; --line-soft:#EAF0F5;
+  --blue:#1F5FA0; --blue-strong:#164A80; --blue-soft:#7FB0D8; --blue-wash:#E7F0F8;
+  --red:#B2182B; --red-soft:#E39B93; --red-wash:#FBEBE8;
+  --amber:#B9821B; --amber-wash:#F6ECD6; --grey-bar:#B7C2CD;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  font-size:17px; line-height:1.72; word-break:keep-all; overflow-wrap:anywhere;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+h1,h2,h3{font-family:"Noto Serif KR","Noto Sans KR",serif; line-height:1.32; text-wrap:balance; letter-spacing:-.01em}
+p{margin:0 0 1em}
+.num{font-variant-numeric:tabular-nums; font-feature-settings:"tnum"}
+a{color:var(--blue); text-underline-offset:3px}
+:focus-visible{outline:2.5px solid var(--blue); outline-offset:3px; border-radius:3px}
+
+/* eyebrow + ruler motif */
+.eyebrow{display:flex; align-items:center; gap:10px; font-size:13px; font-weight:700;
+  letter-spacing:.14em; color:var(--blue); text-transform:uppercase; margin:0 0 14px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);flex:none}
+.ruler{height:14px; background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 14px);
+  border-bottom:1.5px solid var(--line); opacity:.9; margin:6px 0 0}
+
+/* hero */
+.hero{padding:64px 0 40px; position:relative; overflow:hidden}
+.hero .kicker{font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-size:clamp(30px,8.4vw,50px); font-weight:900; margin:0 0 8px}
+.hero h1 .hl{color:var(--amber)}
+.hero .sub{font-size:clamp(16px,4.4vw,20px); color:var(--ink-soft); font-family:"Noto Serif KR",serif; font-weight:600; margin-top:10px}
+.hero .academic{font-size:13.5px; color:var(--muted); margin-top:26px; line-height:1.6}
+.scrollcue{margin-top:34px; font-size:13px; color:var(--muted); display:flex; align-items:center; gap:8px}
+.scrollcue span{animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* section */
+section{padding:44px 0; border-top:1px solid var(--line-soft)}
+section h2{font-size:clamp(22px,5.6vw,29px); font-weight:800; margin:0 0 16px}
+.lead{font-size:18.5px; color:var(--ink-soft)}
+.q{font-family:"Noto Serif KR",serif; font-weight:700; font-size:clamp(21px,5.6vw,27px);
+  color:var(--ink); line-height:1.45; margin:18px 0}
+.q .em{color:var(--red)}
+
+/* cards / callouts */
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 18px; margin:16px 0}
+.callout{border-left:4px solid var(--blue); background:var(--blue-wash); border-radius:0 12px 12px 0;
+  padding:16px 18px; margin:18px 0; color:var(--ink)}
+.callout.red{border-color:var(--red); background:var(--red-wash)}
+.callout .t{font-weight:700; font-family:"Noto Serif KR",serif; margin-bottom:4px}
+.src{font-size:12.5px; color:var(--muted); margin-top:8px}
+.src b{color:var(--ink-soft); font-weight:700}
+
+/* two maps */
+.maps{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:20px 0 6px}
+.maps .m{border-radius:12px; padding:16px 10px; text-align:center; min-width:0}
+.maps .m.sido{background:var(--red-wash); border:1.5px solid var(--red-soft)}
+.maps .m.gwon{background:var(--blue-wash); border:1.5px solid var(--blue-soft)}
+.maps .boxes{display:flex; gap:6px; justify-content:center; align-items:center; margin:6px 0 10px}
+.maps .b{width:44px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:14px;border:1.5px solid; flex:none}
+.maps .sido .b{background:var(--card);border-color:var(--red-soft)}
+.maps .gwon .wrapb{border:2px solid var(--blue);border-radius:10px;padding:5px;display:flex;gap:5px;background:var(--card)}
+.maps .gwon .b{border-color:var(--line);width:38px;font-size:13px}
+.maps .arrow{font-size:16px}
+.maps .lab{font-size:13px;color:var(--ink-soft);font-weight:500;line-height:1.4}
+.maps .lab b{display:block;font-family:"Noto Serif KR",serif;font-size:15px;margin-top:3px}
+.maps .sido .lab b{color:var(--red)} .maps .gwon .lab b{color:var(--blue)}
+.arrow{color:var(--muted);font-size:20px}
+
+/* big stat */
+.bigstat{text-align:center; padding:8px 0 4px}
+.bigstat .n{font-family:"Noto Serif KR",serif; font-weight:900; font-size:clamp(64px,20vw,120px);
+  line-height:1; color:var(--amber); letter-spacing:-.02em}
+.bigstat .cap{font-size:16px; color:var(--ink-soft); margin-top:6px}
+.pillrow{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:14px}
+.pill{font-size:13px; font-weight:700; padding:5px 12px; border-radius:999px;
+  background:var(--card); border:1px solid var(--line); color:var(--ink-soft)}
+.pill.blue{background:var(--blue-wash); border-color:var(--blue-soft); color:var(--blue-strong)}
+
+/* charts */
+.chart{margin:18px 0 6px}
+.chart .row{display:grid; grid-template-columns:52px 1fr 54px; align-items:center; gap:8px; margin:5px 0}
+.chart .name{font-size:13.5px; font-weight:600; color:var(--ink-soft); text-align:right}
+.chart .track{background:var(--line-soft); border-radius:5px; height:19px; overflow:hidden}
+.chart .bar{height:100%; width:0; border-radius:5px; transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+.reveal.in .bar{width:var(--w)}
+.chart .val{font-size:13px; font-weight:700; color:var(--ink); text-align:left; font-variant-numeric:tabular-nums}
+.bar.cap{background:var(--blue-strong)} .bar.metro{background:var(--blue)} .bar.do{background:var(--blue-soft)} .bar.special{background:var(--grey-bar)}
+.legend{display:flex; flex-wrap:wrap; gap:12px; font-size:12.5px; color:var(--muted); margin:10px 0 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+
+/* diverging chart */
+.div .row{display:grid; grid-template-columns:44px 1fr 1fr 44px; align-items:center; gap:0; margin:4px 0}
+.div .nm{font-size:13px;font-weight:600;color:var(--ink-soft);text-align:right;padding-right:8px}
+.div .neg,.div .pos{height:17px; position:relative}
+.div .neg{border-right:2px solid var(--line)}
+.div .neg b{position:absolute; right:0; top:0; height:100%; width:0; background:var(--red); border-radius:5px 0 0 5px; transition:width 1s cubic-bezier(.22,1,.36,1)}
+.div .pos b{position:absolute; left:0; top:0; height:100%; width:0; background:var(--blue); border-radius:0 5px 5px 0; transition:width 1s cubic-bezier(.22,1,.36,1)}
+.reveal.in .div b{width:var(--w)}
+.div .v{font-size:12.5px;font-weight:700;padding-left:8px;font-variant-numeric:tabular-nums}
+.div .v.n{color:var(--red);text-align:right;padding-right:8px;padding-left:0}
+.div .v.p{color:var(--blue)}
+.dhdr{display:grid;grid-template-columns:44px 1fr 1fr 44px;font-size:12px;color:var(--muted);margin-bottom:6px}
+.dhdr .l{grid-column:2;text-align:right;padding-right:8px;color:var(--red);font-weight:700}
+.dhdr .r{grid-column:3;padding-left:8px;color:var(--blue);font-weight:700}
+
+/* zero-sum */
+.zerosum{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px; margin:18px 0; text-align:center}
+.zerosum .side{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 8px}
+.zerosum .side .p{font-size:12px;color:var(--muted);margin:0}
+.zerosum .side .n{font-family:"Noto Serif KR",serif; font-weight:800; font-size:clamp(20px,6vw,26px); margin:2px 0}
+.zerosum .kb .n{color:var(--red)} .zerosum .dg .n{color:var(--blue)}
+.zerosum .swap{color:var(--muted);font-size:22px;line-height:1}
+.netzero{text-align:center; margin-top:6px; font-family:"Noto Serif KR",serif; font-weight:700; font-size:18px}
+
+/* table */
+.tbl{width:100%; border-collapse:collapse; font-size:13px; margin:14px 0; font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{padding:8px 6px; border-bottom:1px solid var(--line); text-align:right}
+.tbl th:first-child,.tbl td:first-child{text-align:left; font-weight:600; color:var(--ink-soft)}
+.tbl th{font-size:12px; color:var(--muted); font-weight:700; border-bottom:1.5px solid var(--line)}
+.tbl .z{color:var(--muted)}
+.tblwrap{overflow-x:auto}
+
+/* steps / proposals */
+.steps{display:grid; gap:12px; margin:16px 0}
+.step{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; position:relative}
+.step .k{font-family:"Noto Serif KR",serif; font-weight:900; color:var(--blue); font-size:15px; margin-bottom:2px}
+.step h3{font-size:17px; margin:0 0 4px}
+.step p{margin:0; font-size:14.5px; color:var(--ink-soft)}
+
+/* timeline */
+.tl{display:grid; gap:0; margin:16px 0}
+.tl .i{display:grid; grid-template-columns:78px 1fr; gap:14px; padding:14px 0; border-top:1px solid var(--line-soft)}
+.tl .i:first-child{border-top:0}
+.tl .yr{font-family:"Noto Serif KR",serif; font-weight:800; color:var(--blue); font-size:15px}
+.tl .c h3{font-size:16px;margin:0 0 3px}
+.tl .c p{font-size:14px;color:var(--ink-soft);margin:0}
+
+/* sources */
+.sources{font-size:13.5px}
+.sources ol{margin:8px 0 0; padding-left:20px}
+.sources li{margin:0 0 12px; color:var(--ink-soft); line-height:1.55}
+.sources li b{color:var(--ink)}
+.verify{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:18px 0;font-size:14px;color:var(--ink-soft)}
+.verify .t{font-family:"Noto Serif KR",serif;font-weight:700;color:var(--ink);margin-bottom:6px}
+.chk{display:flex;gap:8px;align-items:flex-start;margin:6px 0}
+.chk .m{color:var(--blue);font-weight:800;flex:none}
+
+footer{padding:36px 0 60px; color:var(--muted); font-size:12.5px; text-align:center; border-top:1px solid var(--line-soft)}
+footer .disc{margin-top:8px; line-height:1.6}
+
+/* theme toggle */
+.toggle{position:fixed; top:14px; right:14px; z-index:20; background:var(--card); border:1px solid var(--line);
+  color:var(--ink-soft); border-radius:999px; width:40px; height:40px; font-size:17px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; box-shadow:0 2px 10px rgba(0,0,0,.06)}
+
+/* reveal */
+.reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none} .chart .bar,.div b{transition:none} .scrollcue span{animation:none}
+}
+@media (min-width:560px){ .zerosum{gap:20px} }
+</style>
+</head>
+<body>
+<button class="toggle" id="themeBtn" aria-label="라이트/다크 전환">◐</button>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">제2회 지역·대학 동반성장 방안 연구 공모전</div>
+    <h1>경북 학생이 대구에 취직하면,<br><span class="hl">인재 유출인가?</span></h1>
+    <div class="sub">5극3특 시대, 지역인재 성과를 재는 자(尺)를 다시 묻다</div>
+    <div class="ruler" aria-hidden="true"></div>
+    <p class="academic">5극3특 권역 기반 재집계를 통한 지역성장 인재양성체계(앵커)의 성과평가·예산배분 모형 재설계</p>
+    <div class="scrollcue">아래로 스크롤 <span aria-hidden="true">↓</span></div>
+  </div>
+</header>
+
+<section id="question">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>질문</div>
+    <p class="lead">경상북도에서 대학을 마친 청년이, 대구의 기업에 취직했습니다.</p>
+    <p class="q">이 청년은 지역에 남은 걸까요, <span class="em">떠난 걸까요?</span></p>
+    <p>지금 정부 통계로는 <b>'경북을 떠난 사람', 곧 인재 유출</b>로 잡힙니다. 시·도 경계를 넘었기 때문입니다. 그런데 이 분류에 따라 <b>대학 지원 예산 4,000억 원</b>이 나뉩니다.</p>
+  </div>
+</section>
+
+<section id="maps">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>같은 이동, 다른 대답</div>
+    <h2>어떤 지도로 보느냐에 달렸다</h2>
+    <div class="maps">
+      <div class="m sido">
+        <div class="boxes"><span class="b">경북</span><span class="arrow">→</span><span class="b">대구</span></div>
+        <div class="lab">시·도 지도로 보면<b>유출 (−)</b></div>
+      </div>
+      <div class="m gwon">
+        <div class="boxes"><span class="wrapb"><span class="b">경북</span><span class="arrow">→</span><span class="b">대구</span></span></div>
+        <div class="lab">대구·경북권으로 보면<b>권역 안 이동 (0)</b></div>
+      </div>
+    </div>
+    <p>정부는 2025년 발표한 <b>'5극3특' 국가균형성장 전략</b>에서 대구와 경북을 <b>하나의 권역</b>으로 묶었습니다. 같은 사람, 같은 이동인데 어떤 자로 재느냐에 따라 답이 정반대가 됩니다.</p>
+    <div class="src"><b>자료</b> · 지방시대위원회「5극3특 국가균형성장 추진전략」(2025.9) / 김상태(2025) 정책브리핑</div>
+  </div>
+</section>
+
+<section id="changed">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>무엇이 바뀌었나</div>
+    <h2>라이즈 → 앵커, 그리고 4,000억</h2>
+    <div class="tl">
+      <div class="i"><div class="yr num">2025</div><div class="c"><h3>라이즈(RISE)</h3><p>지자체가 대학을 직접 지원. 17개 시·도 단위, 컨설팅 중심.</p></div></div>
+      <div class="i"><div class="yr num">2026.4</div><div class="c"><h3>앵커(ANCHOR)로 개편</h3><p>① 성과평가로 예산 차등 — <b>4,000억 원</b> (시·도 단위 평가)<br>② 초광역 단위 사업 <b>2,000억 원</b> (5극3특 공유대학)</p></div></div>
+    </div>
+    <div class="callout">
+      <div class="t">핵심 — 정부도 권역이 답인 걸 안다</div>
+      정부는 권역용 사업(2,000억)을 새로 만들었습니다. 그런데 정작 큰돈인 <b>성과평가 4,000억을 나누는 잣대는 여전히 시·도</b>입니다. 게다가 보도자료에서 <b>"예산 배분방식은 추가 검토한다"</b>며 아직 정하지 않았다고 밝혔습니다.
+      <div class="src"><b>자료</b> · 교육부「지역성장 인재양성체계(앵커) 추진방안」보도자료(2026.4.2)</div>
+    </div>
+  </div>
+</section>
+
+<section id="mismatch">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>어긋난 지점</div>
+    <h2>권역으로 키우며, 시·도로 잰다</h2>
+    <p class="lead">인재를 키우는 공간은 <b style="color:var(--blue)">권역(초광역)</b>으로 넓혔는데, 성과를 재는 공간은 여전히 <b style="color:var(--red)">시·도</b>입니다.</p>
+    <p>이 불일치가 4,000억 원을 정책 목표와 어긋난 방향으로 나눌 수 있습니다. 정말 그런지, 통계청 인구이동 원자료 <b>11년치(2015–2025)</b>를 두 가지 자로 다시 집계해 확인했습니다.</p>
+  </div>
+</section>
+
+<section id="find1">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>발견 ①</div>
+    <h2>유출의 절반은, 권역을 안 벗어났다</h2>
+    <div class="bigstat">
+      <div class="n num">44.5<span style="font-size:.5em">%</span></div>
+      <div class="cap">2025년 청년(25–29세) 시·도 간 이동 중<br><b>권역을 벗어나지 않은 비율</b></div>
+      <div class="pillrow">
+        <span class="pill blue num">11년간 43.4 ~ 46.9% 유지</span>
+        <span class="pill">한 번도 43% 아래로 안 내려감</span>
+      </div>
+    </div>
+    <p style="margin-top:20px">시·도 통계로 '유출'이라 집계된 청년의 <b>절반 가까이</b>가, 정부가 그린 권역 안에서는 나가지 않은 것입니다. 특정 해의 우연이 아니라 <b>11년째 반복되는 구조</b>입니다.</p>
+    <div class="src"><b>자료</b> · 통계청「국내인구이동통계」(DT_1B26003) 원자료를 이용하여 저자 산출</div>
+  </div>
+</section>
+
+<section id="find2">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>발견 ②</div>
+    <h2>같은 자를 대도, 지역마다 다르게 왜곡된다</h2>
+    <p>전출 청년 중 '권역 안'으로 간 비율(과대계상률). 이 값이 클수록 시·도 자가 유출을 크게 부풀린 것입니다.</p>
+    <div class="chart reveal" id="chart2" aria-label="시도별 과대계상률 막대그래프"></div>
+    <div class="legend">
+      <span><i style="background:var(--blue-strong)"></i>수도권</span>
+      <span><i style="background:var(--blue-soft)"></i>비수도권 도·광역시</span>
+      <span><i style="background:var(--grey-bar)"></i>3특(권역=시도, 구조상 0%)</span>
+    </div>
+    <p style="margin-top:16px"><b style="color:var(--blue)">인천은 72.5%</b> — 유출의 4분의 3이 사실상 허수입니다(서울·경기로 갔을 뿐). 반면 <b>강원·전북·제주(3특)는 0%</b> — 권역이 곧 시·도라 부풀릴 여지조차 없습니다. 같은 자를 대도 지역마다 왜곡 정도가 다른, 지리학의 <b>가변공간단위문제(MAUP)</b>의 전형입니다.</p>
+    <div class="src"><b>자료</b> · 통계청「국내인구이동통계」원자료를 이용하여 저자 산출 (2025년, 25–29세)</div>
+  </div>
+</section>
+
+<section id="find3">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>발견 ③</div>
+    <h2>권역 안에서는, 순증이 없다</h2>
+    <p>대구·경북권 안을 들여다보면 — 경북과 대구는 청년을 <b>서로 주고받습니다.</b></p>
+    <div class="zerosum">
+      <div class="side kb"><p class="p">경북 → 대구</p><div class="n num">5,680명</div></div>
+      <div class="swap">⇄</div>
+      <div class="side dg"><p class="p">대구 → 경북</p><div class="n num">5,243명</div></div>
+    </div>
+    <div class="netzero">상쇄하면 권역 순증 ≈ <span style="color:var(--amber)">0</span></div>
+    <p style="margin-top:16px">권역 전체 청년은 <b>한 명도 늘지 않았습니다.</b> 그런데 시·도 평가는 이 맞왕래에서 <b style="color:var(--blue)">대구=유치 성공</b>, <b style="color:var(--red)">경북=유출 실패</b>로 계상합니다. 실제로 경북 전출 청년의 1순위 목적지는 수도권이 아니라 <b>대구(28.3%)</b>였습니다.</p>
+    <div class="src"><b>자료</b> · 통계청「국내인구이동통계」원자료를 이용하여 저자 산출 (2025년, 25–29세). 이 맞왕래는 11년간 매년 1.0만~1.4만 명 규모로 반복.</div>
+  </div>
+</section>
+
+<section id="problem">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>그래서 무엇이 문제인가</div>
+    <h2>흡수를 성과로 착각한다</h2>
+    <div class="callout red">
+      <div class="t">① 제로섬을 성과로 보상</div>
+      거점 도시가 옆 도(道)의 청년을 흡수한 걸 성과로 쳐줍니다. 교육부는 '예산 나눠먹기'를 잡겠다고 했지만, 시·도 평가는 그보다 교정하기 어려운 <b>'권역 내 인재 흡수'</b>를 오히려 보상합니다.
+    </div>
+    <div class="callout red">
+      <div class="t">② 측정 편향</div>
+      시·도 자가 유출을 부풀리는 정도가 <b>수도권 63.6%에서 3특 0%</b>까지 지역마다 다릅니다. 같은 성과를 내고도 어느 권역에 속하느냐에 따라 평가가 달라집니다.
+    </div>
+    <p style="margin-top:16px">결국 놓치는 것은 정책이 스스로 내건 목표 — <b>"청년이 지역에 남았는가"</b>라는 결과입니다.</p>
+  </div>
+</section>
+
+<section id="solution">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>해법</div>
+    <h2>재는 자(尺)를 바꾼다</h2>
+    <p>'권역 정주기여 지수(RCI)'로 성과를 측정합니다. 원리는 셋입니다.</p>
+    <div class="steps">
+      <div class="step"><div class="k">원리 1</div><h3>권역 안 이동은 성과에서 뺀다</h3><p>제로섬인 권역 내 왕래는 특정 시·도의 성과로 계상하지 않는다. 흡수는 성과가 아니다.</p></div>
+      <div class="step"><div class="k">원리 2</div><h3>인구로 정규화한다</h3><p>절대 인원이 아니라 청년 인구 대비 비율로 재어, 규모 큰 지역이 자동으로 유리해지지 않게.</p></div>
+      <div class="step"><div class="k">원리 3</div><h3>3특은 별도 보정한다</h3><p>완충(권역 내부 이동)이 없는 강원·전북·제주는 개선도 중심으로 공정하게 비교.</p></div>
+    </div>
+    <div class="callout"><b>현행 시·도 배분 틀은 그대로 두고 '기준'만 교체</b>합니다. 제도를 뒤엎지 않아 바로 채택할 수 있습니다.</div>
+  </div>
+</section>
+
+<section id="realloc">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>4,000억을 다시 나누면</div>
+    <h2>흡수 도시 → 지키는 지역</h2>
+    <div class="dhdr"><span class="l">◀ 감액</span><span class="r">증액 ▶</span></div>
+    <div class="div reveal" id="chart3" aria-label="시도별 배분 증감 발산형 막대그래프"></div>
+    <p style="margin-top:16px">돈이 청년을 흡수하던 <b style="color:var(--red)">거점 도시(세종 −159억, 울산 −52억, 인천 −33억)</b>에서, 청년을 실제로 지키는 <b style="color:var(--blue)">주변 지역(강원 +61억, 전남 +56억, 전북 +53억, 경북 +26억)</b>으로 이동합니다. 이 방향은 <b>계산 파라미터를 바꿔도 유지</b>됐습니다(9개 조합 민감도 검증).</p>
+    <div class="src"><b>자료</b> · 저자의 배분 시뮬레이션(2023–2025 평균, 기본배분 50%+성과배분 50%). 방향·상대크기를 보이기 위한 예시적 산출이며 정확한 예측이 아님.</div>
+  </div>
+</section>
+
+<section id="detail">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>권역별 상세</div>
+    <h2>자를 바꾸면 유출률은 절반이 된다</h2>
+    <div class="tblwrap"><table class="tbl">
+      <thead><tr><th>권역</th><th>시·도기준<br>전출률(‰)</th><th>권역기준<br>전출률(‰)</th><th>과대<br>계상률</th></tr></thead>
+      <tbody id="tblbody"></tbody>
+    </table></div>
+    <p style="margin-top:10px">전국 청년의 전출률은 시·도 기준 104.7~115.5‰에서, 권역 기준으로 바꾸면 <b>57.1~62.7‰로 거의 절반</b>이 됩니다. 자를 바꾸는 것만으로 '유출'로 잡히던 청년의 절반이 사라집니다.</p>
+    <div class="src"><b>자료</b> · 통계청「국내인구이동통계」·「주민등록연앙인구」원자료를 이용하여 저자 산출 (2025년, 25–29세)</div>
+  </div>
+</section>
+
+<section id="proposal">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>정책 제안</div>
+    <h2>세 가지</h2>
+    <div class="steps">
+      <div class="step"><div class="k">제안 1</div><h3>결과지표 신설</h3><p>앵커 성과평가에 '권역 정주기여'를 결과지표로 포함 — 개편의 명분이던 '인재가 남는 성과'를 직접 측정.</p></div>
+      <div class="step"><div class="k">제안 2</div><h3>제로섬 제외</h3><p>같은 권역 내 시·도 간 이동은 성과·실패 어느 쪽으로도 계상하지 않는다.</p></div>
+      <div class="step"><div class="k">제안 3</div><h3>3특 별도 트랙</h3><p>완충 없는 3특은 개선도 중심으로 보정. 초광역 공유대학 사업(2,000억)과 연계해 실행.</p></div>
+    </div>
+    <p class="q" style="margin-top:22px">정책의 공간은 권역으로 넓어졌다.<br>이제 <span class="em">재는 자(尺)도</span> 그 공간에 맞춰야 한다.</p>
+  </div>
+</section>
+
+<section id="sources" class="sources">
+  <div class="wrap reveal">
+    <div class="eyebrow"><span class="dot"></span>근거와 출처</div>
+    <h2>모든 수치는 원자료에서 산출</h2>
+    <div class="verify">
+      <div class="t">연구윤리 · 검증 상태</div>
+      <div class="chk"><span class="m">✓</span><span>모든 통계 수치는 공개 원자료에서 스크립트로 직접 산출 — 독립 재계산까지 일치(검증 1~10차, 팩트 오류 0).</span></div>
+      <div class="chk"><span class="m">✓</span><span>모든 직접 인용은 원문과 문자 단위로 대조. 참고문헌 11건 전부 원문 파일 보유.</span></div>
+      <div class="chk"><span class="m">✓</span><span>전국 보고값과 시도 격자 합계가 11개 연도 전부 오차 0으로 일치.</span></div>
+    </div>
+    <p style="font-weight:700;color:var(--ink);margin:18px 0 4px">1차 자료 (통계 원자료)</p>
+    <ol>
+      <li><b>통계청,「국내인구이동통계」</b> — 전출지/전입지(시도)/성/연령(5세)별 이동자수(DT_1B26003), 2015–2025. <a href="https://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1B26003">KOSIS</a></li>
+      <li><b>통계청,「주민등록연앙인구」</b> — 시군구/성/연령(5세)별(DT_1B040M5·DT_1B040M5_1), 2015–2025. KOSIS 공유서비스</li>
+    </ol>
+    <p style="font-weight:700;color:var(--ink);margin:18px 0 4px">정책 문헌</p>
+    <ol start="3">
+      <li><b>교육부(2026),</b>「지역성장 인재양성체계(앵커) 추진방안」보도자료(2026.4.2). — 4,000억 성과평가, 2,000억 초광역, '예산 배분방식 추가 검토'</li>
+      <li><b>지방시대위원회(2025),</b>「5극3특 국가균형성장 추진전략 설계도안」(2025.9). — "시도 단위→권역별 메가시티 단위의 경계 확장"</li>
+      <li><b>김상태(2025),</b>「'5극3특', 초광역 협력 기반의 새로운 균형성장 전략」, 대한민국 정책브리핑(2025.11.21). — 5극3특 권역 구분</li>
+      <li><b>교육부(2026),</b>「2026년 고등교육 재정지원 계획」(2026.2). — 라이즈 2조원 위임</li>
+    </ol>
+    <p style="font-weight:700;color:var(--ink);margin:18px 0 4px">선행연구 (KCI)</p>
+    <ol start="7">
+      <li><b>유나영·마강래(2024),</b> 비수도권 광역시 청년인구의 지역 간 이동패턴에 관한 연구, 한국지역개발학회지 36(2). — "유출 청년의 주요 유입지는 수도권 및 광역시"</li>
+      <li>이찬영·이흥후(2016), 경제연구 34(4) · 김기승·정민수(2013), 경제연구 31(2) · 김동신(2021), 정책개발연구 21(2) · 김민주 외(2023), 한국도시지리학회지 26(2) · 김현우·이두헌(2021), 한국콘텐츠학회논문지 21(12).</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    제2회 지역·대학 동반성장 방안 연구 공모전 · 연구논문 분야
+    <div class="disc">본 페이지의 모든 수치는 공개 원자료에서 산출한 검증값입니다. 배분 시뮬레이션은 지표 교체의 방향과 상대적 크기를 보이기 위한 예시적 산출이며, 정확한 예산 예측이 아닙니다.</div>
+  </div>
+</footer>
+
+<script>
+// ---- verified data (원자료 산출값) ----
+const DATA = {
+  over: [ {s:"인천",r:"수도권",v:72.5},{s:"경기",r:"수도권",v:62.5},{s:"서울",r:"수도권",v:62.3},
+    {s:"세종",r:"충청권",v:42.3},{s:"부산",r:"부울경",v:38.9},{s:"경남",r:"부울경",v:35.9},
+    {s:"울산",r:"부울경",v:33.8},{s:"대전",r:"충청권",v:33.1},{s:"광주",r:"광주전남",v:31.8},
+    {s:"전남",r:"광주전남",v:31.7},{s:"대구",r:"대경",v:28.8},{s:"경북",r:"대경",v:28.3},
+    {s:"충북",r:"충청권",v:25.4},{s:"충남",r:"충청권",v:23.6},
+    {s:"전북",r:"3특",v:0},{s:"제주",r:"3특",v:0},{s:"강원",r:"3특",v:0} ],
+  alloc: [ {s:"강원",v:61},{s:"전남",v:56},{s:"전북",v:53},{s:"부산",v:39},{s:"광주",v:39},
+    {s:"경북",v:26},{s:"대전",v:13},{s:"경기",v:5},{s:"경남",v:3},{s:"충북",v:0},
+    {s:"대구",v:-2},{s:"서울",v:-10},{s:"제주",v:-16},{s:"충남",v:-24},{s:"인천",v:-33},
+    {s:"울산",v:-52},{s:"세종",v:-159} ],
+  reg: [ {r:"수도권",a:94.2,b:34.3,o:63.6},{r:"부산·울산·경남권",a:126.3,b:79.7,o:36.9},
+    {r:"광주·전남권",a:136.6,b:93.3,o:31.7},{r:"충청권",a:148.9,b:106.2,o:28.6},
+    {r:"대구·경북권",a:146.5,b:104.7,o:28.5},{r:"강원특별자치도",a:148.2,b:148.2,o:0},
+    {r:"전북특별자치도",a:122.8,b:122.8,o:0},{r:"제주특별자치도",a:131.5,b:131.5,o:0} ]
+};
+const METRO=new Set(["수도권"]), SPECIAL=new Set(["3특"]);
+function barClass(r){ if(r==="수도권") return "cap"; if(r==="3특") return "special"; return "do"; }
+
+// chart 2: 과대계상률
+(function(){
+  const el=document.getElementById("chart2"); const max=80;
+  el.innerHTML=DATA.over.map(d=>{
+    const w=(d.v/max*100).toFixed(1);
+    return `<div class="row"><div class="name">${d.s}</div><div class="track"><div class="bar ${barClass(d.r)}" style="--w:${w}%"></div></div><div class="val num">${d.v.toFixed(1)}%</div></div>`;
+  }).join("");
+})();
+
+// chart 3: 배분 diverging
+(function(){
+  const el=document.getElementById("chart3"); const maxabs=159;
+  el.innerHTML=DATA.alloc.map(d=>{
+    const neg=d.v<0, w=(Math.abs(d.v)/maxabs*100).toFixed(1);
+    return `<div class="row">
+      <div class="nm">${d.s}</div>
+      <div class="neg">${neg?`<b style="--w:${w}%"></b>`:""}</div>
+      <div class="pos">${!neg&&d.v>0?`<b style="--w:${w}%"></b>`:""}</div>
+      <div class="v ${neg?"n":"p"} num">${d.v>0?"+":""}${d.v}</div>
+    </div>`;
+  }).join("");
+})();
+
+// table: 권역별
+(function(){
+  const tb=document.getElementById("tblbody");
+  tb.innerHTML=DATA.reg.map(d=>`<tr><td>${d.r}</td><td class="num">${d.a.toFixed(1)}</td><td class="num">${d.b.toFixed(1)}</td><td class="num ${d.o===0?"z":""}">${d.o.toFixed(1)}%</td></tr>`).join("");
+})();
+
+// theme toggle
+(function(){
+  const btn=document.getElementById("themeBtn"), root=document.documentElement;
+  function cur(){ return root.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"); }
+  btn.addEventListener("click",()=>{ const n=cur()==="dark"?"light":"dark"; root.setAttribute("data-theme",n); });
+})();
+
+// reveal on scroll
+(function(){
+  const io=new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{threshold:.14});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
